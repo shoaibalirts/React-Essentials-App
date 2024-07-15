@@ -24,6 +24,7 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
+            {/* Component wraps another component is composition */}
             <TabButton>Components</TabButton>
             <TabButton>JSX</TabButton>
             <TabButton>Props</TabButton>
