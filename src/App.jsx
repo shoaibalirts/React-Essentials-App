@@ -1,3 +1,4 @@
+import image1 from "./assets/react-core-concepts.png";
 const reactDescriptions = ["Fundamental", "Crucial", "Core"];
 
 function genRandomInt(max) {
@@ -7,7 +8,7 @@ function genRandomInt(max) {
 function Header() {
   return (
     <header>
-      <img src="src/assets/react-core-concepts.png" alt="Stylized atom" />
+      <img src={image1} alt="Stylized atom" />
 
       <h1>React Essentials</h1>
       <p>
