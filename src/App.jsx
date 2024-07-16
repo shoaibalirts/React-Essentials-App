@@ -6,12 +6,23 @@ import Card from "./components/Card/Card.jsx";
 import { useState } from "react";
 function App() {
   const [selectedTopic, setSelectedTopic] = useState();
-
   function handleSelect(selectedButton) {
     setSelectedTopic(selectedButton); // components, jsx, props, state
     // console.log(EXAMPLES[selectedTopic]);
   }
 
+  let tabContent = <p>Please select a topic</p>;
+  if (selectedTopic) {
+    tabContent = (
+      <section id="tab-content">
+        <h3>{EXAMPLES[selectedTopic].title}</h3>
+        <p>{EXAMPLES[selectedTopic].description}</p>
+        <pre>
+          <code>{EXAMPLES[selectedTopic].code}</code>
+        </pre>
+      </section>
+    );
+  }
   return (
     <div>
       <Header />
@@ -33,7 +44,10 @@ function App() {
           <h2>Examples</h2>
           <menu>
             {/* Component wraps another component is composition */}
-            <TabButton onSelect={() => handleSelect("components")}>
+            <TabButton
+              onSelect={() => handleSelect("components")}
+              isSelected={selectedTopic === "components" ? true : false}
+            >
               Components
             </TabButton>
             {/* <TabButton
@@ -43,44 +57,27 @@ function App() {
             >
               xyz
             </TabButton> */}
-            <TabButton onSelect={() => handleSelect("jsx")}>JSX</TabButton>
-            <TabButton onSelect={() => handleSelect("props")}>Props</TabButton>
-            <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
+            <TabButton
+              onSelect={() => handleSelect("jsx")}
+              isSelected={selectedTopic === "jsx" ? true : false}
+            >
+              JSX
+            </TabButton>
+            <TabButton
+              onSelect={() => handleSelect("props")}
+              isSelected={selectedTopic === "props" ? true : false}
+            >
+              Props
+            </TabButton>
+            <TabButton
+              onSelect={() => handleSelect("state")}
+              isSelected={selectedTopic === "state" ? true : false}
+            >
+              State
+            </TabButton>
           </menu>
         </section>
-        {!selectedTopic && <p>Please select a topic</p>}
-        {selectedTopic && (
-          <section id="tab-content">
-            <h3>{EXAMPLES[selectedTopic].title}</h3>
-            <p>{EXAMPLES[selectedTopic].description}</p>
-            <pre>
-              <code>{EXAMPLES[selectedTopic].code}</code>
-            </pre>
-          </section>
-        )}
-
-        <section>
-          <h1>Available Experts</h1>
-          <Card name="Anthony Blake">
-            <p>
-              Blake is a professor of Computer Science at the University of
-              Illinois.
-            </p>
-            <p>
-              <a href="mailto:blake@example.com">Email Anthony</a>
-            </p>
-          </Card>
-
-          <Card name="Maria Miles">
-            <p>
-              Maria is a professor of Computer Science at the University of
-              Illinois.
-            </p>
-            <p>
-              <a href="mailto:blake@example.com">Email Maria</a>
-            </p>
-          </Card>
-        </section>
+        {tabContent}
       </main>
     </div>
   );
