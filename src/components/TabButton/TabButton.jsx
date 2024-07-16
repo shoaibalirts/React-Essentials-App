@@ -1,4 +1,4 @@
-import TabContent from "../TabContent";
+// import TabContent from "../TabContent";
 export default function TabButton({ children, onSelect }) {
   return (
     <li>

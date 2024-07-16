@@ -4,10 +4,19 @@ import CoreConcept from "./components/CoreConcept/CoreConcept.jsx";
 import TabButton from "./components/TabButton/TabButton.jsx";
 import Card from "./components/Card/Card.jsx";
 console.log(CORE_CONCEPTS);
-function handleSelect() {
+function handleSelect(selectedButton) {
+  console.log(selectedButton);
   const TabContent = document.getElementById("tab-content");
   TabContent.innerHTML = "";
-  TabContent.append(CORE_CONCEPTS[0].description);
+  if (selectedButton === "components") {
+    TabContent.append(CORE_CONCEPTS[0].description);
+  } else if (selectedButton === "jsx") {
+    TabContent.append(CORE_CONCEPTS[1].description);
+  } else if (selectedButton === "props") {
+    TabContent.append(CORE_CONCEPTS[2].description);
+  } else if (selectedButton === "state") {
+    TabContent.append(CORE_CONCEPTS[3].description);
+  } else "No desscription";
 }
 function App() {
   return (
@@ -31,10 +40,12 @@ function App() {
           <h2>Examples</h2>
           <menu>
             {/* Component wraps another component is composition */}
-            <TabButton onSelect={handleSelect}>Components</TabButton>
-            <TabButton onSelect={handleSelect}>JSX</TabButton>
-            <TabButton onSelect={handleSelect}>Props</TabButton>
-            <TabButton onSelect={handleSelect}>State</TabButton>
+            <TabButton onSelect={() => handleSelect("components")}>
+              Components
+            </TabButton>
+            <TabButton onSelect={() => handleSelect("jsx")}>JSX</TabButton>
+            <TabButton onSelect={() => handleSelect("props")}>Props</TabButton>
+            <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
         </section>
         <section id="tab-content"></section>
