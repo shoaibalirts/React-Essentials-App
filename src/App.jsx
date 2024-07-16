@@ -3,22 +3,31 @@ import Header from "../src/components/Header/Header.jsx";
 import CoreConcept from "./components/CoreConcept/CoreConcept.jsx";
 import TabButton from "./components/TabButton/TabButton.jsx";
 import Card from "./components/Card/Card.jsx";
+import { useState } from "react";
 console.log(CORE_CONCEPTS);
-function handleSelect(selectedButton) {
-  console.log(selectedButton);
-  const TabContent = document.getElementById("tab-content");
-  TabContent.innerHTML = "";
-  if (selectedButton === "components") {
-    TabContent.append(CORE_CONCEPTS[0].description);
-  } else if (selectedButton === "jsx") {
-    TabContent.append(CORE_CONCEPTS[1].description);
-  } else if (selectedButton === "props") {
-    TabContent.append(CORE_CONCEPTS[2].description);
-  } else if (selectedButton === "state") {
-    TabContent.append(CORE_CONCEPTS[3].description);
-  } else "No desscription";
-}
 function App() {
+  const [selectedTopic, setSelectedTopic] = useState("Please click a button");
+  function handleSelect(selectedButton) {
+    setSelectedTopic(selectedButton);
+    /*
+    const TabContent = document.getElementById("tab-content");
+    console.log(TabContent);
+    TabContent.innerHTML = "";
+    if (selectedButton === "components") {
+      TabContent.append(CORE_CONCEPTS[0].description);
+    } else if (selectedButton === "jsx") {
+      TabContent.append(CORE_CONCEPTS[1].description);
+    } else if (selectedButton === "props") {
+      TabContent.append(CORE_CONCEPTS[2].description);
+    } else if (selectedButton === "state") {
+      TabContent.append(CORE_CONCEPTS[3].description);
+    } else if (selectedButton === "xyz") {
+      TabContent.append("XYZ");
+      console.log("xyz");
+    }
+      */
+  }
+
   return (
     <div>
       <Header />
@@ -43,12 +52,20 @@ function App() {
             <TabButton onSelect={() => handleSelect("components")}>
               Components
             </TabButton>
+            {/* <TabButton
+              onSelect={handleSelect(function () {
+                return "xyz";
+              })}
+            >
+              xyz
+            </TabButton> */}
             <TabButton onSelect={() => handleSelect("jsx")}>JSX</TabButton>
             <TabButton onSelect={() => handleSelect("props")}>Props</TabButton>
             <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
         </section>
-        <section id="tab-content"></section>
+        {/* <section id="tab-content"></section> */}
+        {selectedTopic}
         <section>
           <h1>Available Experts</h1>
           <Card name="Anthony Blake">
