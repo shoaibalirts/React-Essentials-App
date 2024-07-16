@@ -1,10 +1,12 @@
-import { CORE_CONCEPTS } from "../src/utility/data.js";
+import { CORE_CONCEPTS, EXAMPLES } from "../src/utility/data.js";
 import Header from "../src/components/Header/Header.jsx";
 import CoreConcept from "./components/CoreConcept/CoreConcept.jsx";
 import TabButton from "./components/TabButton/TabButton.jsx";
 import Card from "./components/Card/Card.jsx";
 import { useState } from "react";
 console.log(CORE_CONCEPTS);
+console.log("---------------");
+// console.log(EXAMPLES);
 function App() {
   const [selectedTopic, setSelectedTopic] = useState("Please click a button");
   function handleSelect(selectedButton) {
@@ -64,7 +66,13 @@ function App() {
             <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
         </section>
-        {/* <section id="tab-content"></section> */}
+        <section id="tab-content">
+          <h3></h3>
+          <p></p>
+          <pre>
+            <code></code>
+          </pre>
+        </section>
         {selectedTopic}
         <section>
           <h1>Available Experts</h1>
