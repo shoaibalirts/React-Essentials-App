@@ -5,7 +5,7 @@ import TabButton from "./components/TabButton/TabButton.jsx";
 import Card from "./components/Card/Card.jsx";
 import { useState } from "react";
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState("components");
+  const [selectedTopic, setSelectedTopic] = useState();
 
   function handleSelect(selectedButton) {
     setSelectedTopic(selectedButton); // components, jsx, props, state
@@ -48,14 +48,16 @@ function App() {
             <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
         </section>
-
-        <section id="tab-content">
-          <h3>{EXAMPLES[selectedTopic].title}</h3>
-          <p>{EXAMPLES[selectedTopic].description}</p>
-          <pre>
-            <code>{EXAMPLES[selectedTopic].code}</code>
-          </pre>
-        </section>
+        {!selectedTopic ? <p>Please select a topic</p> : null}
+        {selectedTopic ? (
+          <section id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>{EXAMPLES[selectedTopic].code}</code>
+            </pre>
+          </section>
+        ) : null}
 
         <section>
           <h1>Available Experts</h1>
