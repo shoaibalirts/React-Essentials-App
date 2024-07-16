@@ -4,30 +4,12 @@ import CoreConcept from "./components/CoreConcept/CoreConcept.jsx";
 import TabButton from "./components/TabButton/TabButton.jsx";
 import Card from "./components/Card/Card.jsx";
 import { useState } from "react";
-console.log(CORE_CONCEPTS);
-console.log("---------------");
-// console.log(EXAMPLES);
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState("Please click a button");
+  const [selectedTopic, setSelectedTopic] = useState("components");
+
   function handleSelect(selectedButton) {
-    setSelectedTopic(selectedButton);
-    /*
-    const TabContent = document.getElementById("tab-content");
-    console.log(TabContent);
-    TabContent.innerHTML = "";
-    if (selectedButton === "components") {
-      TabContent.append(CORE_CONCEPTS[0].description);
-    } else if (selectedButton === "jsx") {
-      TabContent.append(CORE_CONCEPTS[1].description);
-    } else if (selectedButton === "props") {
-      TabContent.append(CORE_CONCEPTS[2].description);
-    } else if (selectedButton === "state") {
-      TabContent.append(CORE_CONCEPTS[3].description);
-    } else if (selectedButton === "xyz") {
-      TabContent.append("XYZ");
-      console.log("xyz");
-    }
-      */
+    setSelectedTopic(selectedButton); // components, jsx, props, state
+    // console.log(EXAMPLES[selectedTopic]);
   }
 
   return (
@@ -56,7 +38,7 @@ function App() {
             </TabButton>
             {/* <TabButton
               onSelect={handleSelect(function () {
-                return "xyz";
+                return "any text for identification of the button";
               })}
             >
               xyz
@@ -66,14 +48,15 @@ function App() {
             <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
         </section>
+
         <section id="tab-content">
-          <h3></h3>
-          <p></p>
+          <h3>{EXAMPLES[selectedTopic].title}</h3>
+          <p>{EXAMPLES[selectedTopic].description}</p>
           <pre>
-            <code></code>
+            <code>{EXAMPLES[selectedTopic].code}</code>
           </pre>
         </section>
-        {selectedTopic}
+
         <section>
           <h1>Available Experts</h1>
           <Card name="Anthony Blake">
