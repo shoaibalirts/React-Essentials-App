@@ -26,7 +26,7 @@ export default function Examples() {
       <menu>
         {/* Component wraps another component is composition */}
         <TabButton
-          onSelect={() => handleSelect("components")}
+          onClick={() => handleSelect("components")}
           isSelected={selectedTopic === "components" ? true : false}
         >
           Components
@@ -39,19 +39,19 @@ export default function Examples() {
       xyz
     </TabButton> */}
         <TabButton
-          onSelect={() => handleSelect("jsx")}
+          onClick={() => handleSelect("jsx")}
           isSelected={selectedTopic === "jsx" ? true : false}
         >
           JSX
         </TabButton>
         <TabButton
-          onSelect={() => handleSelect("props")}
+          onClick={() => handleSelect("props")}
           isSelected={selectedTopic === "props" ? true : false}
         >
           Props
         </TabButton>
         <TabButton
-          onSelect={() => handleSelect("state")}
+          onClick={() => handleSelect("state")}
           isSelected={selectedTopic === "state" ? true : false}
         >
           State
