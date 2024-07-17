@@ -1,5 +1,6 @@
 import { EXAMPLES } from "../utility/data.js";
 import TabButton from "./TabButton/TabButton.jsx";
+import Section from "./Section.jsx";
 import { useState } from "react";
 export default function Examples() {
   const [selectedTopic, setSelectedTopic] = useState();
@@ -21,8 +22,7 @@ export default function Examples() {
     );
   }
   return (
-    <section id="examples">
-      <h2>Examples</h2>
+    <Section id="examples" title="Examples">
       <menu>
         {/* Component wraps another component is composition */}
         <TabButton
@@ -58,6 +58,6 @@ export default function Examples() {
         </TabButton>
       </menu>
       {tabContent}
-    </section>
+    </Section>
   );
 }
